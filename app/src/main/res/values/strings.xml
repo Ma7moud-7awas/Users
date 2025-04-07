@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Users</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="job_title">Job Title</string>
+    <string name="gender">Gender</string>
+    <string name="add_user">Add User</string>
+    <string name="add">Add</string>
+    <string name="cancel">@android:string/cancel</string>
+    <string name="year">Year</string>
+
+    <string name="empty_list_title">No Users Added Yet!</string>
+    <string name="empty_list_hint">add your 1st user by clicking the + button</string>
+
+    <string name="enter_valid_name">Enter a valid Name!</string>
+    <string name="enter_valid_job_title">Enter a valid Job Title!</string>
+    <string name="enter_valid_age">Enter a valid Age!</string>
+</resources>
