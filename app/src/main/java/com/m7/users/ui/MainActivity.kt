@@ -17,7 +17,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -35,6 +34,12 @@ fun MainPreview() {
     UsersTheme {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
+            floatingActionButton = {
+                AddUserButton(
+                    true,
+                    onClick = {}
+                )
+            }
         ) { innerPadding ->
             Column {
                 Box(
@@ -43,8 +48,6 @@ fun MainPreview() {
                         .padding(innerPadding)
                 ) {
                     DisplayUsersScreenPreview()
-
-                    AddUserButton(true, {}, Modifier.align(Alignment.BottomEnd))
                 }
             }
         }
@@ -78,29 +81,27 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 ) { innerPadding ->
-                    Box(
+                    Column(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding)
                     ) {
-                        Column {
-                            if (medicines.isNotEmpty()) {
-                                UsersList(
-                                    medicines,
-                                    listState = listState
-                                )
-                            } else {
-                                EmptyUsersList()
-                            }
-
-                            if (showAddDialog)
-                                AddUserDialog(
-                                    onDismiss = { showAddDialog = false },
-                                    onConfirmation = {
-                                        mainViewModel.addUser(it)
-                                    }
-                                )
+                        if (medicines.isNotEmpty()) {
+                            UsersList(
+                                medicines,
+                                listState = listState
+                            )
+                        } else {
+                            EmptyUsersList()
                         }
+
+                        if (showAddDialog)
+                            AddUserDialog(
+                                onDismiss = { showAddDialog = false },
+                                onConfirmation = {
+                                    mainViewModel.addUser(it)
+                                }
+                            )
                     }
                 }
             }
